@@ -27,4 +27,10 @@ There are 4 Classes that are in helpers, their description is as follows:
 Initialises with a suit and a rank property, that will store that cards specific suit and rank. This was created to simplify the deck creation and so that each card could be it's own object.
 
 - Deck - 
-Initialises with an empty list to hold all the cards and then creates all 52 cards in order. The deck has two methods to help with gameplay. 
+Initialises with an empty list to hold all the cards and then creates all 52 cards in order. The deck has two methods to help with gameplay. The shuffle method utilises 'shuffle' from the random module, and simulates the actual shuffling of the deck. The deal method will return the first item in the list, simulating the top card being picked.
+
+- Hand - 
+Each player will have a 'hand' which is an object that can keep track of cards the players' receive, as well as the value of their hand. The 'add_card' method takes in a card object and appends it to the hand objects list. It also calculates the value of that card (using the constant variable discussed above) and updates the total value. There is a method to hand the 'ace' interaction. It will give the ace a value of 11 by default, and check whether the hands total value exceeds 21, at which point it will change the value of the ace to 1.
+
+- Chips - 
+This object is created to keep track of the players total chips and handle all the interactions associated with that. The default chips are set to 100 and there are methods to update the total value, whether the player wins or loses a bet.
