@@ -23,4 +23,8 @@ There are 3 global constants used in helpers:
 
 There are 4 Classes that are in helpers, their description is as follows:
 
-- Card
+- Card - 
+Initialises with a suit and a rank property, that will store that cards specific suit and rank. This was created to simplify the deck creation and so that each card could be it's own object.
+
+- Deck - 
+Initialises with an empty list to hold all the cards and then creates all 52 cards in order. The deck has two methods to help with gameplay. 
