@@ -34,3 +34,9 @@ Each player will have a 'hand' which is an object that can keep track of cards t
 
 - Chips - 
 This object is created to keep track of the players total chips and handle all the interactions associated with that. The default chips are set to 100 and there are methods to update the total value, whether the player wins or loses a bet.
+
+---
+#### main.py:
+
+This file has the main game loop and logic to perform the running of the game and is the file you should run in order to play the game.
+

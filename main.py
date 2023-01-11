@@ -1,10 +1,13 @@
+# Import the relevant classes from helpers.py
 from helpers import Deck, Hand, Chips
 
 
 def main():
     
+    # Keeps track of game state
     playing = True
 
+    # Game setup and generation
     while True:
         # Print an opening statement
         print('\nWelcome to BlackJack! Get as close to 21 as you can without going over!\n\nDealer hits until she reaches 17. Aces count as 1 or 11.\n')
@@ -30,10 +33,9 @@ def main():
         # Show cards (but keep one dealer card hidden)
         show_some(player_hand, dealer_hand)
 
-        while playing:  # recall this variable from our hit_or_stand function
+        while playing:
             
             # Prompt for Player to Hit or Stand
-            # hit_or_stand(deck,player_hand) 
             while True:
                 x = input("Would you like to Hit or Stand? Enter 'h' or 's' ")
             
@@ -57,7 +59,7 @@ def main():
                 player_busts(player_hand, dealer_hand, player_chips)
                 break        
 
-        # If Player hasn't busted, play Dealer's hand until Dealer reaches 17 
+        # If Player hasn't bust, play Dealer's hand until Dealer reaches 17 
         if player_hand.value <= 21:
             
             while dealer_hand.value < 17:
@@ -66,7 +68,7 @@ def main():
             # Show all cards
             show_all(player_hand, dealer_hand)
             
-            # Run different winning scenarios
+            # Run all winning scenarios
             if dealer_hand.value > 21:
                 dealer_busts(player_hand, dealer_hand, player_chips)
 
@@ -79,7 +81,7 @@ def main():
             else:
                 push()
     
-        # Inform Player of their chips total 
+        # Inform Player of their total chips
         print("\nPlayer's winnings stand at", player_chips.total)
         
         # Ask to play again
@@ -93,6 +95,7 @@ def main():
             break  
 
 
+# Function for error handling and sanitation of bet value
 def take_bet(chips):
     
     while True:
@@ -107,11 +110,13 @@ def take_bet(chips):
                 break
 
 
+# Adds card from deck to hand and checks for aces
 def hit(deck, hand):
     hand.add_card(deck.deal())
     hand.adjust_for_ace()
 
 
+# Shows hands, but keeps dealers hidden
 def show_some(player, dealer):
     print("\nDealer's Hand:")
     print(" <card hidden>")
@@ -119,6 +124,7 @@ def show_some(player, dealer):
     print("\nPlayer's Hand:", *player.cards, sep='\n ')
 
 
+# Shows all cards of all hands
 def show_all(player, dealer):
     print("\nDealer's Hand:", *dealer.cards, sep='\n ')
     print("Dealer's Hand =", dealer.value)
@@ -126,6 +132,7 @@ def show_all(player, dealer):
     print("Player's Hand =", player.value)
 
 
+# Next five functions handle all the different winning scenarios
 def player_busts(player, dealer, chips):
     print("BUST Player")
     chips.lose_bet()

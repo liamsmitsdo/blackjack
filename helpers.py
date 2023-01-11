@@ -1,5 +1,6 @@
 from random import shuffle
 
+
 # Constants used to make cards
 SUIT = ('hearts', 'spades', 'diamonds', 'clubs')
 RANK = ('two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king', 'ace')
