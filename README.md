@@ -12,3 +12,15 @@ Once the game starts the player is told the rules of the game and is asked what 
 ---
 #### helpers.py: 
 
+This file has all the relevant classes needed for the game to function. They were seperated for ease of use and to declutter the main file. 
+
+There are 3 global constants used in helpers: 
+|Constant|Description|
+|---|---|
+|Suit|Tuple with the four suits that come in a standard deck.|
+|Rank|Tuple with the names of all the cards that form part of each suit|
+|Value|Dictionary where the keys are the same card names from rank, and the values to each name represent that cards numeric value. This is used when calculating the value of the hands.|
+
+There are 4 Classes that are in helpers, their description is as follows:
+
+- Card
