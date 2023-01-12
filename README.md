@@ -40,3 +40,33 @@ This object is created to keep track of the players total chips and handle all t
 
 This file has the main game loop and logic to perform the running of the game and is the file you should run in order to play the game.
 
+It first imports all the relevant classes from *helpers.py*, then creates the main gameloop within the main function. Before explaining the logic in the main game loop, it would be best to explain the other functions created in this file which aid the main function:
+
+|Function|Description|
+|---|---|
+|take_bet|Takes the chips object and asks the player for their bet amount, checking for and handling errors - to ensure player can place that bet and that the bet value is clean.|
+|hit|Takes the deck and a hand object, adds card from deck to hand and checks for aces.|
+|show_some|Will take both hand objects and print the relevant card objects with nice formatting, revealing all cards except the dealer's top card.|
+|show_all|Will take both hand objects and print the relevant card objects with nice formatting, revealing all cards.|
+|player_busts|Used when the player's hand goes over 21. Will update chips and print accordingly.|
+|player_wins|Used when the player's hand is higher than the dealers. Will update chips and print accordingly.|
+|dealer_busts|Used when the dealer's hand goes over 21. Will update chips and print accordingly.|
+|dealer_wins|Used when the dealer's hand is higher than the players. Will update chips and print accordingly.|
+|push|Used when both parties draw, will only print message. Chips stay the same|
+
+Now we can explain the main game function.
+
+It starts with a variable to track the game state. It then print's a welcome message and sets up the game:
+
+- First the deck is created and then shuffled
+- The player hand is created and draws two card's from the deck
+- Same thing happens for the dealer's hand
+- The chips object gets created
+
+After setup the player is asked to place a bet using the *take_bet* function and the concealed hands are shown using the *show_some* function.
+
+At this point the main game loop starts - within the loop the player is asked to either **hit** or **stand** and capturing the response. It then reprints the hands, while still keeping the dealer's top card hidden. Lastly, it checks if the player's hand value exceeds 21, resulting in a bust - which would be the exiting criteria for the loop (or if the player states that they choose to **stand**).
+
+The next loop will then start after the player chooses to stand, but hasn't exceeded 21. It will then start *hitting* on behalf of the dealer's hand until the value of the hand is above 17. It will then check all the various winning conditions and print the relevant messages depending on who wins. Additionally, updating the chips value, dependant on the outcome as well.
+
+The program will then check if the player would like to play again and handle the game state following the response.
